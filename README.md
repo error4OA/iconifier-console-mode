@@ -1,7 +1,10 @@
 # iconifier-console-mode
 "Iconify your text, without the need of a GUI"
+
 A python-pure open-source program that allows text iconification! Without a gui.
+
 Original can be found [here](https://github.com/error4OA/iconifier)
+
 ## Instructions
 1. Go to [releases](https://github.com/error4OA/iconifier-console-mode/releases)
 2. Download the latest release
