@@ -1,7 +1,7 @@
 # Iconifier: Console Mode (ICM; aka CLI Iconifier)
 "Iconify your text, without the need of a GUI"
 
-A python-pure open-source program that allows text iconification! Without a gui.
+A python-pure open-source program that allows text iconification! Without a GUI.
 
 Original can be found [here](https://github.com/error4OA/iconifier "this app but with an actual GUI")
 
