@@ -19,7 +19,7 @@ leet_dict = {
 }
 
 github_v = requests.get("https://raw.githubusercontent.com/error4OA/iconifier-console-mode/main/do-not-mess/info.json").json()
-curr_v = "beta1"
+curr_v = "beta2"
 
 print("Iconifier: Console Mode\nMade by: podemb\nCurrent version: {}".format(curr_v))
 
@@ -48,6 +48,8 @@ parser.add_argument("-t", "--text", help="The text to use.", required=False, def
 parser.add_argument("-s", "--style", help="The style to use", required=False, default="1")
 parser.add_argument("-ts", "--text-style", help="The text style to use", required=False, default="1")
 parser.add_argument("-lp", "--load-preset", help="Load a .icm-preset file; will cancel out almost all parameters", required=False)
+parser.add_argument("-st", "--save-output-to", help="Save output to a file", required=False)
+parser.add_argument("-sp", "--save-preset", help="Save settings to a .icm-preset file", required=False)
 parser.add_argument("-c", "--copy-to-clipboard", required=False, help="Copy result to clipboard if passed.", action="store_true")
 args = parser.parse_args()
 
@@ -110,6 +112,24 @@ else:
 
 result = style[0] + emojized + style[1] + currentText
 
+if args.save_output_to:
+    with open(args.save_output_to, "w", encoding="utf-8") as f:
+        f.write(result)
+
+if args.save_preset:
+    if not args.save_preset.endswith("icm-preset"):
+        print("Filename does not end with .icm-preset; operation aborted")
+        exit()
+    with open(args.save_preset, "w") as f:
+        data = {
+            "text": args.text,
+            "emoji": args.emoji,
+            "text_style": args.text_style,
+            "style": args.style
+        }
+        json.dump(data, f)
+
 print("Your result is: {}\nDont be worried if some of the text doesnt appear, it is normal".format(result))
+
 if args.copy_to_clipboard:
     clipboard.copy(result)
